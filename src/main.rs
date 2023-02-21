@@ -1,10 +1,12 @@
+use std::{io::BufReader, fs::File};
+
 use sha2::{Digest, Sha256};
 
 
 fn get_hash(filepath: &str) -> String {
-    let bytes = std::fs::read(filepath).unwrap();
+    let mut f = BufReader::new(File::open(filepath).unwrap());
     let mut h = Sha256::new();
-    h.update(&bytes[..]);
+    std::io::copy(&mut f, &mut h).unwrap();
     hex::encode(h.finalize())
 }
 
