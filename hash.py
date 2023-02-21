@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import hashlib
-import time
 
 def get_hash(file_path):
 	myhash = hashlib.sha256()
@@ -12,4 +11,4 @@ def get_hash(file_path):
 
 if __name__ == '__main__':
 	filepath = "testfile"
-	print(get_hash(filepath))
+	get_hash(filepath)
